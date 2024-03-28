@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entertainment App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <marquee behavior="scroll" direction="left">
+                <strong>Select your favorite song or video:</strong>
+            </marquee>
+        </nav>
+        <div class="card-container" id="cardContainer">
+            <!-- Cards will be dynamically added here -->
+        </div>
+        <iframe id="videoFrame" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <script>
+        const songs = [
+            { name: 'Song 1', url: 'https://djwmcv6aab6vn.cloudfront.net/natu.mp4', imageUrl: 'natu1.webp' },
+            { name: 'Song 2', url: 'https://djwmcv6aab6vn.cloudfront.net/Ramana%20Aei%20Lyrical%20Video%20_%20Guntur%20Kaaram%20_%20Mahesh%20Babu%20_%20Sreeleela%20_%20Trivikram%20_%20Thaman%20S.mp4', imageUrl: 'babu.webp' },
+            { name: 'Song 3', url: 'https://djwmcv6aab6vn.cloudfront.net/video_2024-03-28_14-28-06.mp4', imageUrl: 'chitti.jpeg' },
+            { name: 'Song 4', url: 'https://djwmcv6aab6vn.cloudfront.net/La%20La%20Bheemla%20Full%20Video%20Song_#BheemlaNayak%20_%20Pawan%20Kalyan,%20Rana%20_Trivikram%20_%20SaagarKChandra_ThamanS.mp4', imageUrl: 'Beemla.webp' },
+            { name: 'Song 5', url: 'https://djwmcv6aab6vn.cloudfront.net/Veera%20Simha%20Reddy%20-%20Jai%20Balayya%20Mass%20Anthem%20Video%20_%20Nandamuri%20Balakrishna%20_%20Shruti%20Haasan%20_%20Thaman%20S.mp4', imageUrl: 'balaya.webp' },
+            { name: 'Song 6', url: 'https://djwmcv6aab6vn.cloudfront.net/Hey%C2%A0Akhil%20Full%20Video%20Song%20__%20Akhil%20-%20The%20Power%20Of%20Jua%20__%20Akhil%C2%A0Akkineni,%C2%A0Sayesha.mp4', imageUrl: 'akki.webp' }
+        ];
+
+        const cardContainer = document.getElementById('cardContainer');
+
+        songs.forEach(song => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <div class="card-content">
+                    <img src="${song.imageUrl}" alt="${song.name}" class="song-image">
+                    <h3>${song.name}</h3>
+                    <button onclick="playVideo('${song.url}')">Play</button>
+                </div>
+            `;
+            cardContainer.appendChild(card);
+        });
+
+        function playVideo(videoUrl) {
+            document.getElementById('videoFrame').src = videoUrl;
+        }
+    </script>
+</body>
+</html>
